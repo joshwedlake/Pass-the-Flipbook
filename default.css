@@ -1,0 +1,323 @@
+/* (C) Josh Wedlake 2011, GPL v3, see LICENSE for information. */
+
+
+
+body {
+	background-color:#FFFFFF;
+	font-family:"Arial", Arial, sans-serif;
+	overflow-x: hidden;
+}
+
+/* animation pages have a white bg */
+body.animation {
+	background-color:#FFFFFF;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+
+/* headers */
+h1 {
+	margin-left:20px;
+	font-family:"Arial", Arial, sans-serif;
+}
+
+h2 {
+	margin-left:30px;
+	font-family:"Arial", Arial, sans-serif;
+}
+
+p {
+	margin-left:40px;
+}
+
+p.pageFooter {
+	margin-left:5px;
+	font-size:x-small;
+	font-family:"Arial", Arial, sans-serif;
+	/*float:right;*/
+	text-align:right;
+	letter-spacing:3px;
+	position:fixed;
+	bottom:5px;
+	right:5px;
+}
+
+a {
+	text-decoration: none;
+	font-weight: bold;
+}
+
+a.miniLink {
+	text-decoration: underline;
+}
+
+a.moreLink {
+	font-size: x-large;
+}
+
+a:link {color:#000000;}      /* unvisited link */
+a:visited {color:#000000;}  /* visited link */
+a:hover {text-decoration: underline;color:#111111;}  /* mouse over link */
+a:active {color:#222222;}  /* selected link */
+
+/* controls */
+.controlButton {
+	border:1px solid;
+	float:left;
+	text-align:center;
+	padding-left:2px;
+	padding-right:2px;
+	padding-top:1px;
+	padding-bottom:1px;
+	min-width:20px;
+	margin-left:3px;
+	margin-right:3px;
+	white-space: nowrap;
+}
+
+.controlButton:hover {
+	border:1px dashed;
+}
+
+.controlButtonLarge {
+	border:1px solid;
+	text-align:center;
+	padding-left:2px;
+	padding-right:2px;
+	padding-top:1px;
+	padding-bottom:1px;
+	min-width:10px;
+	margin-left:6px;
+	margin-right:6px;
+}
+
+.controlButtonLarge:hover {
+	border:1px dashed;
+}
+
+.controlSlider {
+	float:left;
+	vertical-align:middle;
+	width:40px;
+	height:10px;
+	padding:2px;
+	margin:2px;
+}
+
+/* fixed with for a 3 digit number, ie a frame number or a % */
+.controlDisplay {
+	float:left;
+	text-align:center;
+	text-decoration: none;
+	padding:2px;
+	margin:2px;
+	min-width:30px;
+}
+
+.controlText{
+	float:left;
+	text-decoration: none;
+	padding-top:2px;
+	padding-bottom:2px;
+	margin:2px;
+}
+
+.controlTextTitle{
+	float:left;
+	text-decoration: none;
+	padding-top:2px;
+	padding-bottom:2px;
+	margin:2px;
+	width:70px;
+}
+
+/* canvases */
+
+canvas.drawing {
+	float:left;
+	border:1px dotted;
+	cursor:crosshair;
+	margin-left:5px;
+	margin-right:5px;
+}
+
+canvas.player {
+	float:left;
+	border:1px solid;
+	margin-left:5px;
+	margin-right:5px;
+}
+
+/* containers */
+
+.containerCanvas {
+	float:left;
+}
+
+.containerDope {
+	float:left;
+}
+
+.containerButtonRow {
+	float:left;
+	border:1px dashed;
+	margin-left:20px;
+	margin-right:20px;
+	margin-top:2px;
+	margin-bottom:2px;
+	padding-left:2px;
+	padding-right:2px;
+	padding-bottom:2px;
+	padding-top:4px;
+	width:600px;
+	clear:both;
+}
+
+.containerRow {
+	float:left;
+	margin-left:20px;
+	margin-right:20px;
+	margin-top:2px;
+	margin-bottom:2px;
+	padding:2px;
+	width:600px;
+	clear:both;
+}
+
+.containerExpandableRow {
+	float:left;
+	margin-left:20px;
+	margin-right:20px;
+	margin-top:2px;
+	margin-bottom:2px;
+	padding:2px;
+	clear:both;
+}
+
+/* dope sheet */
+
+.dopeCurrent {
+	width: 155px;
+	height: 16px;
+	margin-left: 20px;
+	margin-bottom:5px;
+}
+
+.dopeSheet {
+	width: 159px;
+	height: 275px;
+	margin-left: 20px;
+
+}
+
+/* main menu */
+.menuRow {
+	clear:both;
+	margin-left:40px;
+	padding-top:20px
+}
+
+.menuBlock {
+	border:1px dashed;
+	float:left;
+	text-align:left;
+	font-size:x-small;
+	padding-left:2px;
+	padding-right:2px;
+	padding-top:2px;
+	padding-bottom:2px;
+	min-width:20px;
+	margin-left:3px;
+	margin-right:3px;
+	white-space: nowrap;
+}
+
+.menuButton {
+	border:1px solid;
+	float:right;
+	padding-left:2px;
+	padding-right:2px;
+	padding-top:1px;
+	padding-bottom:1px;
+	margin-left:2px;
+	margin-right:2px;
+}
+
+.menuButton:hover {
+	border:1px dashed;
+}
+
+.menuFlag{
+	border:1px solid;
+	float:right;
+	padding-left:2px;
+	padding-right:2px;
+	padding-top:1px;
+	padding-bottom:1px;
+	margin-left:2px;
+	margin-right:2px;
+}
+
+/*list block, for browse by pages*/
+
+.listBlock {
+	border:1px dashed;
+	float:left;
+	text-align:left;
+	font-size:x-small;
+	padding-left:2px;
+	padding-right:2px;
+	padding-top:2px;
+	padding-bottom:2px;
+	min-width:20px;
+	margin:3px;
+	white-space: nowrap;
+	height:180px;
+	min-width:200px;
+}
+
+.listMore {
+	position:relative;top:70px;
+	text-align:center;
+}
+
+/* login table */
+
+.loginRow {
+	clear:both;
+	width:600px;
+	margin-left:40px;
+}
+
+.loginLeftColTitle {
+	padding:5px;
+	float:left;
+	width:250px;
+	text-align:right;
+	font-weight:bold;
+}
+
+.loginLeftCol {
+	padding:5px;
+	float:left;
+	width:250px;
+	text-align:right;
+	font-weight:default;
+}
+
+.loginInputCol {
+	float:left;
+	width:200px;
+	text-align:left;
+}
+
+/* info pages */
+
+.infoMain{
+	max-width:1000px;
+	line-height:150%;
+}
+

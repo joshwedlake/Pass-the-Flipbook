@@ -1,0 +1,22 @@
+PASS THE FLIPBOOK
+http://www.joshwedlake.com/flipbook
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 3 as published by the Free Software Foundation. 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+
+In addition to the terms of the GPLv3 I would be grateful if any derivative software or websites could link back to the original website (http://www.joshwedlake.com/flipbook) either in the title bar or in the footer, or at minimum in the about page.
+
+--
+Installation
+--
+
+Edit the variables in vars.php.
+Copy all of the files to your server.
+Create the databases by opening create_animations_db.php in a browser.
+You need to install recaptchalib.php in the same folder.
+Create a subfolder called facebook and install the facebook php sdk there.
+
