@@ -25,6 +25,9 @@ if(!isset($_SESSION["user"])) {
 	}
 }
 
+if(intval($_GET["ps_id"])==-1)$based_on="...starting from scratch...";
+else $based_on="based on ".$_GET["ps_name"]." by ".$_GET["ps_anim"];
+
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -32,10 +35,10 @@ if(!isset($_SESSION["user"])) {
 	
 <link rel="stylesheet" type="text/css" href="default.css" />
 <title>
-Create New Animation
+<?php echo "Create New Animation ".$based_on;?>
 </title>
 <!-- Facebook open graph -->
-<?php build_og("Create New Animation"); ?>
+<?php build_og("Create New Animation ".$based_on);?>
 <!-- Google Tracking Code -->
 <?php build_google_analytics(); ?>
 
@@ -45,7 +48,7 @@ Create New Animation
 <a href="menu.php">&#60;&#60;back home</a>
 
 <h1>Create Animation</h1>
-<p><span id='parent_seq_info'></span>
+<p><?php echo $based_on; ?>
 <br /><br />
 <?php
 if(intval($_GET['ps_id'])!=-1) echo "<img src='get_frame.php?seq_id=".$_GET['ps_id']."' width='200px' height='150px' style='border:1px solid;' />";
@@ -64,21 +67,6 @@ if(intval($_GET['ps_id'])!=-1) echo "<img src='get_frame.php?seq_id=".$_GET['ps_
 <p><div id='status' style="margin-left:40px;"></div></p>
 
 <script type="text/javascript">
-
-//loads query string params into qsParm
-var qsParm = new Array();
-function qs() {
-	var query = window.location.search.substring(1);
-	var parms = query.split('&');
-	for (var i=0; i<parms.length; i++) {
-		var pos = parms[i].indexOf('=');
-		if (pos > 0) {
-			var key = parms[i].substring(0,pos);
-			var val = parms[i].substring(pos+1);
-			qsParm[key] = decodeURIComponent(val.replace(/\+/g," "));
-		}
-	}
-}
 
 //escapes html chars
 function html_safe(unsafe) {
@@ -119,10 +107,10 @@ function create_animation() {
 					request="draw.php?"+
 						"id="+encodeURIComponent(return_data[1])+
 						"&pass="+encodeURIComponent(return_data[2])+
-						"&ps_id="+encodeURIComponent(qsParm["ps_id"]);
+						"&ps_id="+encodeURIComponent(ps_id);
 					//if there is a valid parent sequence, then send the length of it
-					if(qsParm["ps_id"]!=-1){
-						request+="&ps_len="+qsParm["ps_len"];
+					if(ps_id!=-1){
+						request+="&ps_len="+ps_len;
 					}
 					location.href=request;
 				}
@@ -140,22 +128,18 @@ function create_animation() {
 			//the user name comes from php
 			echo '+"&animator='.urlencode($_SESSION["user"]).'"'
 			?>
-			+"&parent_seq_id="+encodeURIComponent(qsParm["ps_id"]);
+			+"&parent_seq_id="+encodeURIComponent(ps_id);
 		xmlhttp.send(request);
 		document.getElementById("status").innerHTML="please wait, creating...";
 	}
 }
 
-//load passed params
-qs()
-//expect to receive ps_id, ps_name, ps_anim and ps_len
-//ps_len is the length of the parent sequence, not including any parents above that (ie. not frames_total)
-if (qsParm["ps_id"]!=-1){
-	document.getElementById("parent_seq_info").innerHTML="based on "+html_safe(qsParm["ps_name"])+" by "+html_safe(qsParm["ps_anim"]);
-}
-else {
-	document.getElementById("parent_seq_info").innerHTML="...starting from scratch...";
-}
+//receive parent seq data from php
+<?php
+echo "ps_id=".$_GET["ps_id"].";";
+if(intval($_GET['ps_id'])!=-1)echo "ps_len=".$_GET["ps_len"].";";
+?>
+
 
 </script>
 <?php

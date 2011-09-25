@@ -49,6 +49,7 @@ mysql_query("CREATE TABLE animations(
 	thumbs_score INT,
 	viewed INT,
 	flags INT,
+	tags MEDIUMBLOB,
 	saved TINYINT)") or report_error(mysql_error());
 
 
@@ -62,6 +63,16 @@ mysql_query("CREATE TABLE comments(
 	flags INT,
 	date_created DATETIME,
 	comment TEXT)") or report_error(mysql_error());
+
+echo "Creating tags table<br>";
+
+mysql_query("CREATE TABLE tags(
+	id BIGINT NOT NULL AUTO_INCREMENT, 
+	PRIMARY KEY(id),
+	name VARCHAR(30) CHARSET ascii,
+	animations MEDIUMBLOB,
+	synonyms MEDIUMBLOB,
+	count INT)") or report_error(mysql_error());
 
 echo "Done.<br>";
 

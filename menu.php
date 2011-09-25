@@ -6,6 +6,7 @@ session_start();
 
 //function defines
 include("vars.php");
+include("fetch_tags.php");
 include("build_links.php");
 
 //show flagged content or not
@@ -58,10 +59,20 @@ if($most_children_row = mysql_fetch_array($most_children_result)){
 echo "</h1>";
 
 ?>
+<div class="menuRow">
+<div class='p' style='min-width:1250px'>
+<?php
+$tags_shown=get_popular_tags(15);
+echo "tags";
+foreach($tags_shown as $tag_row)echo "&nbsp;&nbsp;//&nbsp;&nbsp;<a href='tag_view.php?tag_id=".urlencode($tag_row["id"])."'>".html_safe($tag_row["name"])."</a>";
+?>
+</div>
+</div>
+
 
 <div class="menuRow">
 	<h2><a href='browse_by_stat.php?stat=date_created'>Recently Created</a></h2>
-	<p>
+	<div class='p' style='min-width:1250px'>
 		<?php
 		$result = mysql_query("SELECT * FROM animations WHERE (saved=0)"
 			.$flagged_filter
@@ -76,12 +87,12 @@ echo "</h1>";
 		}
 
 		?>
-	</p>
+	</div>
 </div>
 
 <div class="menuRow">
 	<h2><a href='browse_by_stat.php?stat=frames_total'>Longest Animations</a></h2>
-	<p>
+	<div class='p' style='min-width:1250px'>
 		<?php
 		$result = mysql_query("SELECT * FROM animations WHERE (saved=0)"
 			.$flagged_filter
@@ -96,13 +107,13 @@ echo "</h1>";
 		}
 
 		?>
-	</p>
+	</div>
 </div>
 
 
 <div class="menuRow">
 	<h2><a href='browse_by_stat.php?stat=viewed'>Most Viewed</a></h2>
-	<p>
+	<div class='p' style='min-width:1250px'>
 		<?php
 		$result = mysql_query("SELECT * FROM animations WHERE (saved=0)"
 			.$flagged_filter
@@ -117,12 +128,12 @@ echo "</h1>";
 		}
 
 		?>
-	</p>
+	</div>
 </div>
 
 <div class="menuRow">
 	<h2><a href='browse_by_stat.php?stat=thumbs_score'>Top Rated</a></h2>
-	<p>
+	<div class='p' style='min-width:1250px'>
 		<?php
 		$result = mysql_query("SELECT * FROM animations WHERE (saved=0)"
 			.$flagged_filter
@@ -137,12 +148,12 @@ echo "</h1>";
 		}
 
 		?>
-	</p>
+	</div>
 </div>
 
 <div class="menuRow">
 	<h2><a href='browse_by_stat.php?stat=random'>Random</a></h2>
-	<p>
+	<div class='p' style='min-width:1250px'>
 		<?php
 		$random_query=
 		"	SELECT  *										" // Select all data
@@ -174,12 +185,12 @@ echo "</h1>";
 		}
 
 		?>
-	</p>
+	</div>
 </div>
 
 <div class="menuRow">
 	<h2><a href='browse_by_stat.php?stat=date_last_viewed'>Recently Viewed</a></h2>
-	<p>
+	<div class='p' style='min-width:1250px'>
 		<?php
 		$result = mysql_query("SELECT * FROM animations WHERE (saved=0)"
 			.$flagged_filter
@@ -194,7 +205,7 @@ echo "</h1>";
 		}
 
 		?>
-	</p>
+	</div>
 </div>
 
 <div class="menuRow"><br /></div>

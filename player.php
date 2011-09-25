@@ -11,6 +11,7 @@ function build_player_buttons($row){
 	$text_block="<a href='print_flipbook.php?id=".urlencode($row['id'])."' class='controlButton' title='print out a copy of the flipbook'>print flipbook</a>";
 	$text_block.="<a href='planet_view.php?id=".urlencode($row['id'])."' class='controlButton' title='browse in planets view'>planets</a>";
 	$text_block.="<span id='embed' class='controlButton' title='share this animation on a webpage' style='font-weight:bold'>embed</a></span>";
+	$text_block.="<a href='tag_view.php?seq_id=".urlencode($row['id'])."' class='controlButton' title='edit tags'>tags</a>";
 	$extend_link="create_new_animation.php?"
 		. "ps_id=" . urlencode($row['id'])
 		. "&ps_name=" . urlencode($row['name'])
@@ -56,6 +57,7 @@ function get_stack($id,$frames,$names){
 
 //includes
 include("vars.php");
+include("fetch_tags.php");
 include("build_links.php");
 
 //connect to db
@@ -99,13 +101,16 @@ if (isset($_SESSION['user']) && !is_anonymous($_SESSION['user'])) {
 
 }
 
+//get tags
+$tags_shown=get_tags_from_animation($_GET["id"]);
 
 ?>
 
 <!DOCTYPE HTML>
 <html>
 <head>
-
+<meta name="description" content="Creative Commons Animation: <?php echo html_safe($row["name"])." by ".html_safe($row["animator"]); ?> on Pass the Flipbook">
+<meta name="keywords" content="animation,player,creative commons,CC NC-BY,<?php foreach($tags_shown as $tag_row)echo html_safe($tag_row["name"]).","; ?>">
 <link rel="stylesheet" type="text/css" href="default.css" />
 <title>Viewing <?php echo html_safe($row["name"]) ?></title>
 <?php
@@ -121,7 +126,6 @@ echo "<meta property='og:title' content='".html_safe($row["name"])." by ".html_s
 //google analytics
  build_google_analytics();	
 ?>
-
 
 </head>
 <body class="animation">
@@ -167,6 +171,15 @@ echo "<meta property='og:title' content='".html_safe($row["name"])." by ".html_s
 		if($is_thumbed_down) echo " style='font-weight:bold'";?>>-<span id='thumbs_down_count'></span></span>
 	<span id='flag' class="controlButton" title="flag inappropriate content"<?php
 		if($is_flagged) echo " style='font-weight:bold'";?>>flag</span>
+</div>
+
+<div class="containerRow">
+<span style="font-size:small">
+<?php
+echo "tags";
+foreach($tags_shown as $tag_row)echo "&nbsp;&nbsp;//&nbsp;&nbsp;<a href='tag_view.php?tag_id=".urlencode($tag_row["id"])."'>".html_safe($tag_row["name"])."</a>";
+?>
+</span>
 </div>
 
 <div class="containerRow"><br /></div>

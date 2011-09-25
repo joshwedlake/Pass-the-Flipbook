@@ -91,7 +91,7 @@ function build_google_analytics(){
 }
 
 function build_footer(){
-	echo "<p class='pageFooter'>The Lightbox Swingers Club  - content <a rel='license' href='http://creativecommons.org/licenses/by-nc/3.0/' target='_blank'><img alt='CC NC-BY' style='border-width:0;position:relative;top:3px;' src='http://i.creativecommons.org/l/by-nc/3.0/80x15.png' /></a>&nbsp;&nbsp;- code &#169; <a href='http://linetestjournals.blogspot.com'>Josh Wedlake</a>, available under the GPL.</p>";
+	echo "<p class='pageFooter'>The Lightbox Swingers Club  - content <a rel='license' href='http://creativecommons.org/licenses/by-nc/3.0/' target='_blank'><img alt='CC NC-BY' style='border-width:0;position:relative;top:3px;' src='http://i.creativecommons.org/l/by-nc/3.0/80x15.png' /></a>&nbsp;&nbsp;- <a href='https://github.com/joshwedlake/Pass-the-Flipbook' target='_blank'>source code</a> &#169; <a href='http://linetestjournals.blogspot.com'>Josh Wedlake</a>, available under the GPL.</p>";
 }
 
 function build_links($row){
